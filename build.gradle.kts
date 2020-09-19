@@ -5,7 +5,6 @@ plugins {
     kotlin("plugin.jpa") apply false
     id("io.spring.dependency-management") apply false
     id("com.bmuschko.docker-spring-boot-application") apply false
-    id("org.liquibase.gradle") apply false
 }
 
 allprojects {
