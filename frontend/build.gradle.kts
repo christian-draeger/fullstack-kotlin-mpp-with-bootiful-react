@@ -18,6 +18,9 @@ dependencies {
 kotlin {
     js {
         browser {
+            distribution {
+                directory = project(":backend").buildDir.resolve("resources/main/META-INF/resources")
+            }
             webpackTask {
                 cssSupport.enabled = true
             }
