@@ -43,12 +43,12 @@ dependencies {
     implementation(kotlin("reflect"))
     implementation(springBoot("starter-web"))
     implementation(springBoot("actuator-autoconfigure"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.1")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.0")
-    implementation("io.github.microutils:kotlin-logging:1.8.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
+    implementation("io.github.microutils:kotlin-logging:2.0.3")
     implementation("org.slf4j:log4j-over-slf4j:1.7.30")
 
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
     testImplementation("io.mockk:mockk:1.10.0")
 }
 
