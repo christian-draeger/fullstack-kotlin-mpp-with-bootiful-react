@@ -6,6 +6,7 @@ plugins {
     id("io.spring.dependency-management") apply false
     id("com.bmuschko.docker-spring-boot-application") apply false
     id("org.unbroken-dome.test-sets") apply false
+    id("com.github.ben-manes.versions")
 }
 
 allprojects {
