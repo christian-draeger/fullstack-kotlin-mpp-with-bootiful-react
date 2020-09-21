@@ -1,3 +1,3 @@
-data class Dummy(
+data class Greeter(
     val hello: String
 )

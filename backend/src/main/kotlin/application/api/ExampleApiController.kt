@@ -1,8 +1,9 @@
 package application.api
 
-import Dummy
+import Greeter
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 class ExampleApiController {
 
     @GetMapping("/example")
-    fun getSomeData() = Dummy("i'm a shared model")
+    fun getSomeData(
+        @RequestParam name: String
+    ) = Greeter("hello $name")
 
 }
