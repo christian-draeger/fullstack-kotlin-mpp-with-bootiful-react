@@ -1,3 +1,10 @@
+@file:Suppress("PropertyName", "SuspiciousCollectionReassignment")
+
+import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
+
+val kotlin_serialization_version: String by project
+
 plugins {
     kotlin("multiplatform")
 }
@@ -5,8 +12,11 @@ plugins {
 kotlin {
 
     sourceSets {
-        @Suppress("UNUSED_VARIABLE")
-        val commonMain by getting {}
+        commonMain {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization_version")
+            }
+        }
     }
 
     jvm {
@@ -15,5 +25,20 @@ kotlin {
 
     js {
         browser()
+    }
+}
+
+tasks {
+    withType<KotlinCompile<*>>().all {
+        kotlinOptions {
+            freeCompilerArgs += listOf("-Xopt-in=kotlin.ExperimentalUnsignedTypes")
+            freeCompilerArgs += listOf("-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi")
+        }
+    }
+
+    withType<KotlinJvmCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 }
