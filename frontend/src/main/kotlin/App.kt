@@ -1,3 +1,5 @@
+import MySocketMessage.*
+import clients.SocketClient
 import clients.fetchFromBackendExample
 import components.*
 import kotlinx.coroutines.MainScope
@@ -31,11 +33,12 @@ class App : RComponent<RProps, AppState>() {
                 loading = false
             }
         }
+        SocketClient().createSocket()
     }
 
     override fun RBuilder.render() {
         if (state.loading) {
-            span { +"loading" }
+            span { +"loading state demo... (please wait 3seconds ^^)" }
         } else {
             div {
                 h2 { +"a little kotlin JS demo with react, styled, components, material-ui" }
