@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":shared"))
     implementation(kotlin("reflect"))
     implementation(springBoot("starter-web"))
+    implementation(springBoot("starter-websocket"))
     implementation(springBoot("actuator-autoconfigure"))
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
