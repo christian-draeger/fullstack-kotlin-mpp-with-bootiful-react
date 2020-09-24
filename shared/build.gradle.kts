@@ -7,6 +7,7 @@ val kotlin_serialization_version: String by project
 
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
 }
 
 kotlin {

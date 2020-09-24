@@ -19,6 +19,7 @@ pluginManagement {
         kotlin("multiplatform") version kotlin_version
         kotlin("jvm") version kotlin_version
         kotlin("js") version kotlin_version
+        kotlin("plugin.serialization") version kotlin_version
         kotlin("plugin.spring") version kotlin_version
         kotlin("plugin.jpa") version kotlin_version
         id("io.spring.dependency-management") version spring_dependency_management_version
