@@ -9,7 +9,7 @@ An all Kotlin fullstack app that consists of a react frontend and a spring-boot 
 
 ## Run Frontend standalone via webpack (useful during development process)
 ```shell script
-./gradlew browserRun
+./gradlew browserRun --continuous
 ```
 
 ## Run backend only (useful during development process)
