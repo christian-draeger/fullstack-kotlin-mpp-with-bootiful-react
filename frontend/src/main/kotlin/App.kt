@@ -5,23 +5,25 @@ import components.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.html.js.onClickFunction
 import react.*
-import react.dom.div
-import react.dom.h2
-import react.dom.h3
-import react.dom.span
+import react.dom.*
 
-interface AppState: RState {
+interface AppState : RState {
     var loading: Boolean
     var greeter: Greeter
+    var serverTime: String
 }
 
 class App : RComponent<RProps, AppState>() {
+
+    val socketClient = SocketClient()
 
     override fun AppState.init() {
         // set default state
         loading = true
         greeter = Greeter("")
+        serverTime = ""
     }
 
     override fun componentDidMount() {
@@ -33,7 +35,7 @@ class App : RComponent<RProps, AppState>() {
                 loading = false
             }
         }
-        SocketClient().createSocket()
+        socketClient.createSocket()
     }
 
     override fun RBuilder.render() {
@@ -41,7 +43,7 @@ class App : RComponent<RProps, AppState>() {
             span { +"loading state demo... (please wait 3seconds ^^)" }
         } else {
             div {
-                h2 { +"a little kotlin JS demo with react, styled, components, material-ui" }
+                h2 { +"a little kotlin JS demo with react, styled, components, material-ui, communicating over REST and WebSockets." }
                 h3 { +"nothing fancy looking, just to showcase functionality" }
                 h3 { +"message from backend via REST: ${state.greeter.hello}" }
                 exampleFunctionalComponentWithProps { name = "KotlinJS" }
@@ -49,6 +51,18 @@ class App : RComponent<RProps, AppState>() {
                 exampleFunctionalComponentWithStyle
                 exampleFunctionalComponentWithReusableStyle
                 exampleComponentUsingMuirwik
+                button {
+                    +"start"
+                    attrs {
+                        onClickFunction = { socketClient.send(StartTimeSending) }
+                    }
+                }
+                button {
+                    +"stop"
+                    attrs {
+                        onClickFunction = { socketClient.send(StopTimeSending) }
+                    }
+                }
             }
         }
     }
