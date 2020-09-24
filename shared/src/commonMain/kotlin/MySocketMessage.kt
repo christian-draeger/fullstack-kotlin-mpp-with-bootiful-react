@@ -8,12 +8,15 @@ sealed class MySocketMessage {
     @Serializable
     data class ServerTime(
         var formattedDate: String,
-        var formatedTime: String,
+        var formattedTime: String,
         var location: String
     ): MySocketMessage()
 
     @Serializable
-    object MessageWithoutData : MySocketMessage()
+    object StartTimeSending : MySocketMessage()
+
+    @Serializable
+    object StopTimeSending : MySocketMessage()
 
     fun toJson() = Json.encodeToString(serializer(), this)
 
