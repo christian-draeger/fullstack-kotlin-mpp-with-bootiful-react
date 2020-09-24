@@ -37,6 +37,9 @@ class SocketClient {
         webSocket?.send(command.toJson())
     }
 
-    private fun MessageEvent.receive() =
-        MySocketMessage.parse(data.toString())
+    private fun MessageEvent.receive() {
+        val bla =  MySocketMessage.parse(data.toString())
+        println(bla)
+        // TODO: write to global store
+    }
 }
