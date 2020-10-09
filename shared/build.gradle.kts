@@ -3,6 +3,7 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
+@Suppress("VariableNaming")
 val kotlin_serialization_version: String by project
 
 plugins {
