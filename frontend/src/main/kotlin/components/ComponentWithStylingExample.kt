@@ -4,7 +4,10 @@ import kotlinx.css.Color
 import kotlinx.css.backgroundColor
 import kotlinx.css.padding
 import kotlinx.css.px
-import react.*
+import react.RBuilder
+import react.RProps
+import react.child
+import react.functionalComponent
 import styled.css
 import styled.styledDiv
 

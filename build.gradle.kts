@@ -1,4 +1,5 @@
 import com.adarshr.gradle.testlogger.TestLoggerExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.springframework.boot") apply false
@@ -38,8 +39,10 @@ allprojects {
 
 subprojects {
     tasks {
+        withType<KotlinCompile> {
+            dependsOn(ktlintFormat)
+        }
         withType<Test> {
-            dependsOn(ktlintCheck)
             useJUnitPlatform()
             testLogging {
                 events("passed", "skipped", "failed")

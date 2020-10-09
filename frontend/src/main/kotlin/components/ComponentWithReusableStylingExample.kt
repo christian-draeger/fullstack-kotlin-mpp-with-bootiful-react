@@ -1,7 +1,19 @@
 package components
 
-import kotlinx.css.*
-import react.*
+import kotlinx.css.Align
+import kotlinx.css.Color
+import kotlinx.css.Cursor
+import kotlinx.css.Display
+import kotlinx.css.JustifyContent
+import kotlinx.css.alignItems
+import kotlinx.css.backgroundColor
+import kotlinx.css.cursor
+import kotlinx.css.display
+import kotlinx.css.justifyContent
+import react.RBuilder
+import react.RProps
+import react.child
+import react.functionalComponent
 import styled.StyleSheet
 import styled.css
 import styled.styledDiv
@@ -31,7 +43,6 @@ object ComponentStyles : StyleSheet("ComponentStyles") {
         }
     }
 }
-
 
 private val component = functionalComponent<RProps> {
     styledDiv {

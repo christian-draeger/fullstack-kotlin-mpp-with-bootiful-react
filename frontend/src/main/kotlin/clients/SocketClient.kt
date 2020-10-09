@@ -38,7 +38,7 @@ class SocketClient {
     }
 
     private fun MessageEvent.receive() {
-        val bla =  MySocketMessage.parse(data.toString())
+        val bla = MySocketMessage.parse(data.toString())
         println(bla)
         // TODO: write to global store
     }

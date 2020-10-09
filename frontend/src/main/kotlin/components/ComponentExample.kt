@@ -1,7 +1,10 @@
 package components
 
-import react.*
+import react.RBuilder
+import react.RProps
+import react.child
 import react.dom.h1
+import react.functionalComponent
 
 external interface WelcomeProps : RProps {
     var name: String

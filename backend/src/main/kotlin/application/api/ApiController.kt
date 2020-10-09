@@ -28,7 +28,6 @@ class RestApiController {
     fun getSomeData(
         @RequestParam name: String
     ) = Greeter("hello $name")
-
 }
 
 @Component

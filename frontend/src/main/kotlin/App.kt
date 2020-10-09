@@ -1,13 +1,26 @@
-import MySocketMessage.*
+import MySocketMessage.StartTimeSending
+import MySocketMessage.StopTimeSending
 import clients.SocketClient
 import clients.fetchFromBackendExample
-import components.*
+import components.exampleComponentUsingMuirwik
+import components.exampleFunctionalComponentWithProps
+import components.exampleFunctionalComponentWithReusableStyle
+import components.exampleFunctionalComponentWithStateHook
+import components.exampleFunctionalComponentWithStyle
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.html.js.onClickFunction
-import react.*
-import react.dom.*
+import react.RBuilder
+import react.RComponent
+import react.RProps
+import react.RState
+import react.dom.button
+import react.dom.div
+import react.dom.h2
+import react.dom.h3
+import react.dom.span
+import react.setState
 
 interface AppState : RState {
     var loading: Boolean
@@ -17,7 +30,7 @@ interface AppState : RState {
 
 class App : RComponent<RProps, AppState>() {
 
-    val socketClient = SocketClient()
+    private val socketClient = SocketClient()
 
     override fun AppState.init() {
         // set default state
@@ -29,7 +42,7 @@ class App : RComponent<RProps, AppState>() {
     override fun componentDidMount() {
         MainScope().launch {
             val greeterResponse = fetchFromBackendExample("Chris")
-            delay(3000) // just to showcase state change of loader
+            delay(timeMillis = 3_000) // just to showcase state change of loader
             setState {
                 greeter = greeterResponse
                 loading = false

@@ -21,3 +21,8 @@ An all Kotlin fullstack app that consists of a react frontend and a spring-boot 
 ```shell script
 ./gradlew dependencyUpdates
 ```
+
+## Apply code style to idea
+```shell script
+./gradlew ktlintApplyToIdea
+```

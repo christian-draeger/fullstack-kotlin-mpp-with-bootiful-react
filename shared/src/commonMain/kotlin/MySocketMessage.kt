@@ -1,6 +1,6 @@
+
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.serializer
 
 @Serializable
 sealed class MySocketMessage {
@@ -10,7 +10,7 @@ sealed class MySocketMessage {
         var formattedDate: String,
         var formattedTime: String,
         var location: String
-    ): MySocketMessage()
+    ) : MySocketMessage()
 
     @Serializable
     object StartTimeSending : MySocketMessage()
