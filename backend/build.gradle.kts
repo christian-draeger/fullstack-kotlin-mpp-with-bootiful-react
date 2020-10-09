@@ -69,23 +69,6 @@ tasks {
         }
     }
 
-    withType<Test>().configureEach {
-        useJUnitPlatform()
-        testLogging {
-            events("passed", "skipped", "failed")
-        }
-        systemProperties = mapOf(
-            "junit.jupiter.execution.parallel.enabled" to true,
-            "junit.jupiter.execution.parallel.mode.default" to "concurrent",
-            "junit.jupiter.execution.parallel.mode.classes.default" to "concurrent"
-        )
-        finalizedBy(jacocoTestReport)
-    }
-
-    check {
-        finalizedBy(jacocoTestReport)
-    }
-
     build {
         finalizedBy(dockerCreateDockerfile)
     }

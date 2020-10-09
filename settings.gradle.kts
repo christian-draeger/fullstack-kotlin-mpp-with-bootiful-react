@@ -12,9 +12,12 @@ pluginManagement {
     val test_sets_plugin_version: String by settings
     val git_plugin_version: String by settings
     val test_logger_version: String by settings
+    val ktlint_version: String by settings
+
     repositories {
         gradlePluginPortal()
     }
+
     plugins {
         kotlin("multiplatform") version kotlin_version
         kotlin("jvm") version kotlin_version
@@ -31,6 +34,7 @@ pluginManagement {
         id("org.unbroken-dome.test-sets") version test_sets_plugin_version
         id("com.gorylenko.gradle-git-properties") version git_plugin_version
         id("com.adarshr.test-logger") version test_logger_version
+        id("org.jlleitschuh.gradle.ktlint") version ktlint_version
     }
 }
 
