@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.springframework.boot") apply false
-    kotlin("jvm") apply false
+    kotlin("jvm")
     kotlin("plugin.spring") apply false
     kotlin("plugin.jpa") apply false
     id("io.spring.dependency-management") apply false
@@ -12,6 +12,12 @@ plugins {
     id("com.github.ben-manes.versions")
     id("com.adarshr.test-logger")
     id("org.jlleitschuh.gradle.ktlint")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(14))
+    }
 }
 
 allprojects {

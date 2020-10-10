@@ -12,11 +12,6 @@ plugins {
     jacoco
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-
 gitProperties {
     dateFormatTimeZone = "Europe/Berlin"
     failOnNoGitDirectory = false
