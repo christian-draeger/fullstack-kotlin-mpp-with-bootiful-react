@@ -2,6 +2,7 @@ package application.api
 
 import Greeter
 import MySocketMessage
+import kotlinx.datetime.Clock
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,9 +13,6 @@ import org.springframework.web.socket.CloseStatus
 import org.springframework.web.socket.TextMessage
 import org.springframework.web.socket.WebSocketSession
 import org.springframework.web.socket.handler.TextWebSocketHandler
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.concurrent.thread
 
@@ -63,10 +61,10 @@ class SocketHandler : TextWebSocketHandler() {
     fun sendOnDataTimeChange(session: WebSocketSession) {
         thread {
             while (sessionState[session.id]?.time == true) {
-                val time = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))
+                val time = Clock.System.now().toString()
                 if (currentDateAndTimeState != time) {
                     currentDateAndTimeState = time
-                    session.sendMessage(TextMessage(MySocketMessage.ServerTime("foo", "bar", "ndsijfbhs").toJson()))
+                    session.sendMessage(TextMessage(MySocketMessage.ServerTime(time, time, "Berlin").toJson()))
                 }
             }
         }

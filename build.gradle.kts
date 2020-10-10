@@ -27,6 +27,7 @@ allprojects {
     repositories {
         mavenCentral()
         jcenter()
+        maven(url = "https://kotlin.bintray.com/kotlinx/")
     }
 
     apply(plugin = "com.adarshr.test-logger")

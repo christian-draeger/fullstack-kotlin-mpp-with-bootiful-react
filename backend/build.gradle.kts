@@ -39,6 +39,7 @@ dependencies {
     implementation(springBoot("starter-web"))
     implementation(springBoot("starter-websocket"))
     implementation(springBoot("actuator-autoconfigure"))
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
     implementation("io.github.microutils:kotlin-logging:2.0.3")
