@@ -19,14 +19,26 @@ import react.dom.button
 import react.dom.div
 import react.dom.h2
 import react.dom.h3
+import react.dom.p
 import react.dom.span
 import react.setState
 
 interface AppState : RState {
     var loading: Boolean
     var greeter: Greeter
-    var serverTime: String
+    var serverState: ServerState
 }
+
+data class ServerState(
+    var hour: Int = 0,
+    var minute: Int = 0,
+    var second: Int = 0,
+    var day: Int = 1,
+    var month: Int = 1,
+    var year: Int = 0,
+    var city: String = "",
+    var country: String = ""
+)
 
 class App : RComponent<RProps, AppState>() {
 
@@ -36,7 +48,13 @@ class App : RComponent<RProps, AppState>() {
         // set default state
         loading = true
         greeter = Greeter("")
-        serverTime = ""
+        serverState = ServerState()
+    }
+
+    private fun applyServerStateToAppState(serverState: ServerState) {
+        setState {
+            this.serverState = serverState
+        }
     }
 
     override fun componentDidMount() {
@@ -48,7 +66,7 @@ class App : RComponent<RProps, AppState>() {
                 loading = false
             }
         }
-        socketClient.createSocket()
+        socketClient.createSocket(state.serverState, ::applyServerStateToAppState)
     }
 
     override fun RBuilder.render() {
@@ -76,6 +94,14 @@ class App : RComponent<RProps, AppState>() {
                         onClickFunction = { socketClient.send(StopTimeSending) }
                     }
                 }
+                p { +"hour:   ${state.serverState.hour}" }
+                p { +"minute: ${state.serverState.minute}" }
+                p { +"second: ${state.serverState.second}" }
+                p { +"day:    ${state.serverState.day}" }
+                p { +"month:  ${state.serverState.month}" }
+                p { +"year:   ${state.serverState.year}" }
+                p { +"city:   ${state.serverState.city}" }
+                p { +"country:${state.serverState.country}" }
             }
         }
     }
