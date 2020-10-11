@@ -5,7 +5,7 @@ import kotlinx.browser.window
 import org.w3c.dom.MessageEvent
 import org.w3c.dom.WebSocket
 
-class SocketClient {
+class BackendWebSocketClient {
 
     private var webSocket: WebSocket? = null
 

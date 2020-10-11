@@ -7,9 +7,22 @@ sealed class MySocketMessage {
 
     @Serializable
     data class ServerTime(
-        var formattedDate: String,
-        var formattedTime: String,
-        var location: String
+        var hour: Int,
+        var minute: Int,
+        var second: Int
+    ) : MySocketMessage()
+
+    @Serializable
+    data class ServerDate(
+        var day: Int,
+        var month: Int,
+        var year: Int
+    ) : MySocketMessage()
+
+    @Serializable
+    data class ServerLocation(
+        var city: String,
+        var country: String,
     ) : MySocketMessage()
 
     @Serializable

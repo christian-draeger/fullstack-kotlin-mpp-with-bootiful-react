@@ -1,6 +1,6 @@
 import MySocketMessage.StartTimeSending
 import MySocketMessage.StopTimeSending
-import clients.SocketClient
+import clients.BackendWebSocketClient
 import clients.fetchFromBackendExample
 import components.exampleComponentUsingMuirwik
 import components.exampleFunctionalComponentWithProps
@@ -30,7 +30,7 @@ interface AppState : RState {
 
 class App : RComponent<RProps, AppState>() {
 
-    private val socketClient = SocketClient()
+    private val socketClient = BackendWebSocketClient()
 
     override fun AppState.init() {
         // set default state
