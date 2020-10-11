@@ -70,7 +70,7 @@ object AnalogClockStyles : StyleSheet("AnalogClockStyles") {
         position = absolute
         zIndex = 10
         put("box-shadow", "0 2px 4px -1px black")
-        }
+    }
 
     val info by css {
         position = absolute
@@ -194,11 +194,12 @@ external interface AnalogClockProps : RProps {
 
 private val component = functionalComponent<AnalogClockProps> { props ->
 
-    val hourHandDeg = props.serverState.hour * 30 + props.serverState.minute * (360/720)
-    val minuteHandDeg = props.serverState.minute * 6 + props.serverState.second * (360/3600)
+    val hourHandDeg = props.serverState.hour * 30 + props.serverState.minute * (360 / 720)
+    val minuteHandDeg = props.serverState.minute * 6 + props.serverState.second * (360 / 3600)
     val secondHandDeg = props.serverState.second * 6
 
-    styledDiv { css { +AnalogClockStyles.clock }
+    styledDiv {
+        css { +AnalogClockStyles.clock }
 
         div {
             styledDiv {
@@ -221,19 +222,19 @@ private val component = functionalComponent<AnalogClockProps> { props ->
             styledDiv {
                 css {
                     +AnalogClockStyles.hourHand
-                    put("transform","rotate(${hourHandDeg}deg)")
+                    put("transform", "rotate(${hourHandDeg}deg)")
                 }
             }
             styledDiv {
                 css {
                     +AnalogClockStyles.minuteHand
-                    put("transform","rotate(${minuteHandDeg}deg)")
+                    put("transform", "rotate(${minuteHandDeg}deg)")
                 }
             }
             styledDiv {
                 css {
                     +AnalogClockStyles.secondHand
-                    put("transform","rotate(${secondHandDeg}deg)")
+                    put("transform", "rotate(${secondHandDeg}deg)")
                 }
             }
         }

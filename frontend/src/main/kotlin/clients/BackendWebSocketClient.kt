@@ -39,7 +39,7 @@ class BackendWebSocketClient {
     }
 
     private fun MessageEvent.receive(serverState: ServerState, applyServerStateToAppState: (ServerState) -> Unit) {
-        when(val message = MySocketMessage.parse(data.toString())) {
+        when (val message = MySocketMessage.parse(data.toString())) {
             is MySocketMessage.ServerLocation -> serverState.apply {
                 city = message.city
                 country = message.country
