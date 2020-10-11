@@ -33,9 +33,11 @@ import kotlinx.css.textAlign
 import kotlinx.css.top
 import kotlinx.css.width
 import kotlinx.css.zIndex
+import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RProps
 import react.child
+import react.dom.button
 import react.dom.div
 import react.functionalComponent
 import styled.StyleSheet
@@ -186,6 +188,8 @@ object AnalogClockStyles : StyleSheet("AnalogClockStyles") {
 
 external interface AnalogClockProps : RProps {
     var serverState: ServerState
+    var startClockSync: () -> Unit
+    var stopClockSync: () -> Unit
 }
 
 private val component = functionalComponent<AnalogClockProps> { props ->
@@ -262,6 +266,19 @@ private val component = functionalComponent<AnalogClockProps> { props ->
                     +AnalogClockStyles.dialLines
                     put("transform", "rotate(${6 * i}deg)")
                 }
+            }
+        }
+
+        button {
+            +"start"
+            attrs {
+                onClickFunction = { props.startClockSync() }
+            }
+        }
+        button {
+            +"stop"
+            attrs {
+                onClickFunction = { props.stopClockSync() }
             }
         }
     }

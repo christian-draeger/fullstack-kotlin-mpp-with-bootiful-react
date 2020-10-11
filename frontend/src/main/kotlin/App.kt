@@ -12,12 +12,10 @@ import components.exampleFunctionalComponentWithStyle
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
-import react.dom.button
 import react.dom.div
 import react.dom.h2
 import react.dom.h3
@@ -67,7 +65,9 @@ class App : RComponent<RProps, AppState>() {
                 loading = false
             }
         }
-        socketClient.createSocket(state.serverState, ::applyServerStateToAppState)
+        socketClient.createSocket(state.serverState) {
+            setState { serverState = it }
+        }
     }
 
     override fun RBuilder.render() {
@@ -84,19 +84,10 @@ class App : RComponent<RProps, AppState>() {
                 exampleFunctionalComponentWithReusableStyle
                 exampleComponentUsingMuirwik
 
-                analogClock { serverState = state.serverState }
-
-                button {
-                    +"start"
-                    attrs {
-                        onClickFunction = { socketClient.send(StartTimeSending) }
-                    }
-                }
-                button {
-                    +"stop"
-                    attrs {
-                        onClickFunction = { socketClient.send(StopTimeSending) }
-                    }
+                analogClock {
+                    serverState = state.serverState
+                    startClockSync = { socketClient.send(StartTimeSending) }
+                    stopClockSync = { socketClient.send(StopTimeSending) }
                 }
             }
         }
