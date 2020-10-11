@@ -1,7 +1,9 @@
+
 import MySocketMessage.StartTimeSending
 import MySocketMessage.StopTimeSending
 import clients.BackendWebSocketClient
 import clients.fetchFromBackendExample
+import components.analogClock
 import components.exampleComponentUsingMuirwik
 import components.exampleFunctionalComponentWithProps
 import components.exampleFunctionalComponentWithReusableStyle
@@ -19,7 +21,6 @@ import react.dom.button
 import react.dom.div
 import react.dom.h2
 import react.dom.h3
-import react.dom.p
 import react.dom.span
 import react.setState
 
@@ -33,11 +34,11 @@ data class ServerState(
     var hour: Int = 0,
     var minute: Int = 0,
     var second: Int = 0,
-    var day: Int = 1,
-    var month: Int = 1,
-    var year: Int = 0,
-    var city: String = "",
-    var country: String = ""
+    var day: Int = 15,
+    var month: Int = 2,
+    var year: Int = 2016,
+    var city: String = "St. Petersburg",
+    var country: String = "Russia"
 )
 
 class App : RComponent<RProps, AppState>() {
@@ -82,6 +83,9 @@ class App : RComponent<RProps, AppState>() {
                 exampleFunctionalComponentWithStyle
                 exampleFunctionalComponentWithReusableStyle
                 exampleComponentUsingMuirwik
+
+                analogClock { serverState = state.serverState }
+
                 button {
                     +"start"
                     attrs {
@@ -94,14 +98,6 @@ class App : RComponent<RProps, AppState>() {
                         onClickFunction = { socketClient.send(StopTimeSending) }
                     }
                 }
-                p { +"hour:   ${state.serverState.hour}" }
-                p { +"minute: ${state.serverState.minute}" }
-                p { +"second: ${state.serverState.second}" }
-                p { +"day:    ${state.serverState.day}" }
-                p { +"month:  ${state.serverState.month}" }
-                p { +"year:   ${state.serverState.year}" }
-                p { +"city:   ${state.serverState.city}" }
-                p { +"country:${state.serverState.country}" }
             }
         }
     }

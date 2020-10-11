@@ -47,9 +47,9 @@ class MyWebSocketHandler : TextWebSocketHandler() {
             session = session,
             sendTime = false,
             dateTime = LocalDateTime(
-                year = 2016,
-                monthNumber = 2,
-                dayOfMonth = 15,
+                year = 0,
+                monthNumber = 1,
+                dayOfMonth = 1,
                 hour = 0,
                 minute = 0,
                 second = 0,
@@ -66,14 +66,13 @@ class MyWebSocketHandler : TextWebSocketHandler() {
 
         session.send(
             ServerLocation(
-                city = "Gransee",
+                city = "Berlin",
                 country = "Germany"
             )
         )
 
         thread {
             val currentState = sessionState[session.id]
-            println(currentState)
             while (currentState?.sendTime == true) {
 
                 val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())

@@ -8,6 +8,7 @@ import kotlinx.html.dom.serialize
 import kotlinx.html.head
 import kotlinx.html.html
 import kotlinx.html.id
+import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.noScript
 import kotlinx.html.script
@@ -21,6 +22,10 @@ class FrontendController {
     fun serveFrontend() = createHTMLDocument().html {
         head {
             meta { charset = "UTF-8" }
+            link {
+                rel = "stylesheet"
+                href = "https://fonts.googleapis.com/css?family=Poiret+One"
+            }
             script {
                 type = ScriptType.textJavaScript
                 src = "/frontend.js"
