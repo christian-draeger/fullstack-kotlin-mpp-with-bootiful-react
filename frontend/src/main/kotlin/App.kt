@@ -43,17 +43,11 @@ class App : RComponent<RProps, AppState>() {
 
     private val socketClient = BackendWebSocketClient()
 
+    // set default state
     override fun AppState.init() {
-        // set default state
         loading = true
         greeter = Greeter("")
         serverState = ServerState()
-    }
-
-    private fun applyServerStateToAppState(serverState: ServerState) {
-        setState {
-            this.serverState = serverState
-        }
     }
 
     override fun componentDidMount() {

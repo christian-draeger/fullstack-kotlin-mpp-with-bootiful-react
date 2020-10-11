@@ -1,6 +1,7 @@
 # fullstack-kotlin-mpp-with-bootiful-react
-An all Kotlin fullstack app that consists of a react frontend and a spring-boot backend, bundled together as ONE deployable fatjar aka
-**how to build a modern web application usiong Kotlin only!**
+An all Kotlin fullstack app that consists of a React.js frontend and a spring-boot backend, bundled together as ONE deployable fatjar aka
+**how to build a modern web application using Kotlin only!**
+Nevertheless, there are also specific artifacts of the frontend and backend that could be deployed separately.
 
 ## Start complete Application
 ```shell script
