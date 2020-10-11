@@ -131,7 +131,7 @@ object AnalogClockStyles : StyleSheet("AnalogClockStyles") {
         zIndex = 7
         width = 2.px
         height = 120.px
-        background = Color.gold.value
+        background = Color.red.value
         top = 26.px
         left = 50.pct
         marginLeft = (-1).px
@@ -235,6 +235,8 @@ private val component = functionalComponent<AnalogClockProps> { props ->
                 css {
                     +AnalogClockStyles.secondHand
                     put("transform", "rotate(${secondHandDeg}deg)")
+                    put("transition", "all 0.05s")
+                    put("transition-timing-function", "cubic-bezier(0.1, 2.7, 0.58, 1)")
                 }
             }
         }
