@@ -25,7 +25,7 @@ dependencies {
 }
 
 kotlin {
-    js {
+    js(IR) {
         browser {
             distribution {
                 directory = project(":backend").buildDir.resolve("resources/main/META-INF/resources")
@@ -45,5 +45,6 @@ kotlin {
                 }
             }
         }
+        binaries.executable()
     }
 }

@@ -25,7 +25,7 @@ kotlin {
         jvm()
     }
 
-    js {
+    js(BOTH) {
         browser()
     }
 }
